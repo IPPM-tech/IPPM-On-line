@@ -1,1 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="IPPM Membership Application Form" />
+  <title>IPPM Membership Application Form</title>
 
+  <!-- Favicon – now points to your own logo file -->
+  <link rel="icon" href="logo.jpg" type="image/jpeg" />
+
+  <style>
+    /* ===== IPPM Brand Identity ===== */
+    :root {
+      --green-dark: #1b4d3e;
+      --green-medium: #2a6b4f;
+      --green-light: #e2f0d9;
+      --gold: #c9a84c;
+      --gold-light: #f5edc8;
+      --blue-accent: #1f4e79;
+      --field-border: #b0b0b0;
+      --field-bg: #ffffff;
+      --text-dark: #1a1a1a;
+      --shadow: 0 8px 24px rgba(0,0,0,0.08);
+      --radius: 8px;
+      --transition: all 0.25s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, sans-serif;
+      background: #f0f2f0;
+      color: var(--text-dark);
+      padding: 24px 16px;
+      line-height: 1.5;
+    }
+
+    .page-shell {
+      max-width: 860px;
+      margin: 0 auto;
+      background: var(--field-bg);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 30px;
+      border: 1px solid #d0d8d0;
+    }
+
+    /* ===== Header ===== */
+    .form-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .brand-panel {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex: 1 1 300px;
+    }
+
+    .logo-wrap {
+      flex-shrink: 0;
+      width: 110px;
+      height: 110px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--green-light);
+      border-radius: 50%;
+      padding: 6px;
+      transition: var(--transition);
+      border: 2px solid var(--gold);
+    }
+
+    .logo-wrap:hover {
+      transform: scale(1.03);
+      box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.2);
+    }
+
+    .logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 50%;
+    }
+
+    .logo-fallback {
+      display: none;
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--green-dark);
+      letter-spacing: 2px;
+    }
+
+    .heading-copy {
+      text-align: center;
+      flex: 1;
+    }
+
+    .heading-copy h1 {
+      font-size: clamp(1.2rem, 3vw, 1.7rem);
+      color: var(--green-dark);
+      text-transform: uppercase;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+
+    .approval-note {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin: 4px 0 6px;
+    }
+
+    .heading-copy h2 {
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: var(--blue-accent);
+      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 0.8px;
+    }
+
+    /* ===== Photo Panel ===== */
+    .photo-panel {
+      flex: 0 0 140px;
+      background: #fafafa;
+      border: 2px solid var(--field-border);
+      border-radius: var(--radius);
+      padding: 12px 8px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .photo-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+
+    .photo-preview {
+      width: 110px;
+      height: 130px;
+      border: 1px dashed #aaa;
+      border-radius: 4px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: #666;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .photo-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-preview .placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .photo-actions {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .photo-actions .btn-file,
+    .photo-actions .btn-camera {
+      background: var(--green-medium);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      flex: 1 1 auto;
+    }
+
+    .photo-actions .btn-file:hover,
+    .photo-actions .btn-camera:hover {
+      background: var(--green-dark);
+      transform: translateY(-1px);
+    }
+
+    .photo-actions .btn-remove {
+      background: #e74c3c;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 10px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .photo-actions .btn-remove:hover {
+      background: #c0392b;
+    }
+
+    .photo-panel input[type="file"] {
+      display: none; /* hidden, triggered by buttons */
+    }
+
+    /* ===== Fee Notice & Payment Receipt Upload ===== */
+    .fee-notice {
+      background: #f8faf7;
+      border-top: 3px solid var(--green-dark);
+      border-bottom: 3px solid var(--green-dark);
+      padding: 12px 14px;
+      text-align: center;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 8px 16px;
+    }
+
+    .fee-notice strong {
+      color: var(--green-dark);
+      background: #fff;
+      padding: 2px 12px;
+      border-radius: 20px;
+      border: 1px solid var(--gold);
+    }
+
+    /* New highlighted receipt upload – close to fee notice */
+    .receipt-upload-highlight {
+      background: #fff0f0;          /* soft pink */
+      border: 2px solid #f5c6c6;
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin: 0 0 20px 0;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      box-shadow: 0 2px 8px rgba(200, 80, 80, 0.08);
+    }
+
+    .receipt-upload-highlight .label-icon {
+      font-weight: 700;
+      color: #a04040;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.95rem;
+    }
+
+    .receipt-upload-highlight .label-icon::before {
+      content: "📎";
+      font-size: 1.2rem;
+    }
+
+    .receipt-upload-highlight input[type="file"] {
+      flex: 1;
+      padding: 6px 8px;
+      border: 1px solid #d4a0a0;
+      border-radius: 4px;
+      background: #fff;
+      font-size: 0.85rem;
+    }
+
+    .receipt-upload-highlight input[type="file"]::file-selector-button {
+      background: var(--green-medium);
+      color: #fff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+      margin-right: 12px;
+    }
+
+    .receipt-upload-highlight input[type="file"]::file-selector-button:hover {
+      background: var(--green-dark);
+    }
+
+    .receipt-upload-highlight .required-star {
+      color: #c0392b;
+      font-weight: 900;
+      margin-left: 2px;
+    }
+
+    /* ===== Form Sections ===== */
+    .form-section {
+      margin-bottom: 28px;
+    }
+
+    .form-section h3 {
+      background: var(--green-dark);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 8px 16px;
+      border-radius: var(--radius) var(--radius) 0 0;
+      margin-bottom: 14px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .two-columns { grid-template-columns: 1fr 1fr; }
+    .three-columns { grid-template-columns: 1fr 1fr 1fr; }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .field label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .field label .required-star {
+      color: #c0392b;
+      margin-left: 2px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1.5px solid var(--field-border);
+      border-radius: 6px;
+      background: var(--field-bg);
+      font-size: 0.9rem;
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--green-medium);
+      box-shadow: 0 0 0 3px rgba(42, 107, 79, 0.15);
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 60px;
+    }
+
+    /* ===== Tables (Qualifications) ===== */
+    .table-scroll {
+      overflow-x: auto;
+      margin: 6px 0 12px;
+      border-radius: 6px;
+      border: 1px solid #d0d8d0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+    }
+
+    th {
+      background: var(--green-light);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-align: left;
+      padding: 6px 8px;
+      border-bottom: 2px solid var(--green-dark);
+    }
+
+    td {
+      padding: 4px 6px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    td input {
+      width: 100%;
+      padding: 6px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      background: #fcfcfc;
+      transition: var(--transition);
+    }
+
+    td input:focus {
+      border-color: var(--green-medium);
+      box-shadow: 0 0 0 2px rgba(42, 107, 79, 0.12);
+    }
+
+    /* ===== Membership Categories ===== */
+    .radio-group {
+      background: #f8faf7;
+      border: 1px solid var(--field-border);
+      border-radius: 6px;
+      padding: 12px 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 12px;
+    }
+
+    .radio-group .field {
+      flex-direction: row;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .radio-group .field input[type="radio"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--green-dark);
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    .radio-group .field label {
+      font-weight: 500;
+      font-size: 0.85rem;
+      margin: 0;
+    }
+
+    /* ===== Declaration ===== */
+    .declaration-box {
+      background: #f3f7f3;
+      border-left: 4px solid var(--gold);
+      padding: 14px 18px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    /* ===== Official Use ===== */
+    .official-use input,
+    .official-use textarea {
+      background: #f0f0f0;
+      color: #555;
+      cursor: not-allowed;
+    }
+
+    /* ===== Form Actions ===== */
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 2px solid var(--green-light);
+    }
+
+    .primary-button,
+    .secondary-button {
+      padding: 10px 28px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .primary-button {
+      background: var(--green-dark);
+      color: #fff;
+    }
+
+    .primary-button:hover {
+      background: #123b30;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(27, 77, 62, 0.25);
+    }
+
+    .secondary-button {
+      background: var(--blue-accent);
+      color: #fff;
+    }
+
+    .secondary-button:hover {
+      background: #163a5a;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(31, 78, 121, 0.2);
+    }
+
+    /* ===== Footer ===== */
+    .form-footer {
+      margin-top: 30px;
+      border-top: 2px solid var(--gold);
+      padding-top: 18px;
+      text-align: center;
+    }
+
+    .form-footer p {
+      color: var(--green-dark);
+      font-size: 1rem;
+      font-weight: 700;
+      font-style: italic;
+      margin-bottom: 6px;
+    }
+
+    .form-footer .address {
+      background: var(--green-dark);
+      color: #fff;
+      padding: 12px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+
+    .form-footer .address span {
+      display: block;
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 700px) {
+      .page-shell { padding: 18px 14px; }
+      .form-header { flex-direction: column; align-items: center; }
+      .brand-panel { flex-direction: column; text-align: center; }
+      .photo-panel { width: 100%; max-width: 220px; align-self: center; }
+      .two-columns, .three-columns { grid-template-columns: 1fr; }
+      .radio-group { grid-template-columns: 1fr; }
+      .receipt-upload-highlight { flex-direction: column; align-items: stretch; }
+      .receipt-upload-highlight input[type="file"] { width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+      .page-shell { padding: 12px 8px; }
+      .form-actions { flex-direction: column; align-items: stretch; }
+      .primary-button, .secondary-button { justify-content: center; }
+    }
+
+    /* ===== Print Styles ===== */
+    @media print {
+      .photo-actions, .form-actions { display: none !important; }
+      .receipt-upload-highlight { border: 1px solid #999; background: #f9f9f9 !important; }
+      .page-shell { box-shadow: none; border: 1px solid #000; }
+      .form-section h3 { background: #333 !important; color: #fff !important; }
+      .logo-wrap { border: 1px solid #000; }
+    }
+  </style>
+</head>
+<body>
+
+<main class="page-shell">
+
+  <!-- Form action will be set later (Web3Forms / Formspree) -->
+  <form id="membershipForm" class="application-form"
+        action="https://formspree.io/f/your_form_id"
+        method="POST"
+        enctype="multipart/form-data"
+        novalidate>
+
+    <!-- ===== HEADER ===== -->
+    <header class="form-header">
+      <div class="brand-panel">
+        <div class="logo-wrap">
+          <img src="logo.jpg" alt="IPPM Logo" id="organisationLogo" />
+          <span class="logo-fallback">IPPM</span>
+        </div>
+        <div class="heading-copy">
+          <h1>Institute of Public Peace and Management</h1>
+          <p class="approval-note">(With approval of the Federal Ministry of Justice and the Ministry of Education)</p>
+          <h2>Membership Application Form</h2>
+        </div>
+      </div>
+
+      <!-- Passport Photo Panel with Upload + Camera -->
+      <div class="photo-panel">
+        <span class="photo-label">📸 Passport Photo</span>
+        <div class="photo-preview" id="photoPreview">
+          <div class="placeholder">
+            <span>📷</span>
+            <span>Upload or capture</span>
+          </div>
+        </div>
+        <div class="photo-actions">
+          <button type="button" class="btn-file" id="uploadPhotoBtn">Upload</button>
+          <button type="button" class="btn-camera" id="cameraPhotoBtn">📷 Camera</button>
+          <button type="button" class="btn-remove" id="removePhotoBtn" style="display:none;">✕</button>
+        </div>
+        <!-- Hidden file input – used by both buttons -->
+        <input id="passportPhoto" name="passportPhoto" type="file" accept="image/png,image/jpeg,image/webp" />
+      </div>
+    </header>
+
+    <!-- ===== FEE NOTICE ===== -->
+    <div class="fee-notice">
+      <span>💰 Application Fee: <strong>₦10,000</strong></span>
+      <span>Pay into: <strong>IPPM GTCO PLC 0210498847</strong></span>
+    </div>
+
+    <!-- ===== PAYMENT RECEIPT UPLOAD – HIGHLIGHTED ===== -->
+    <div class="receipt-upload-highlight">
+      <span class="label-icon">Upload Bank Payment Receipt <span class="required-star">*</span></span>
+      <input id="paymentReceipt" name="paymentReceipt" type="file" accept="image/*,.pdf" required />
+      <small style="color:#a04040; font-weight:500;">(Attach a clear image or PDF of your payment)</small>
+    </div>
+
+    <!-- ===== SECTION 1 ===== -->
+    <section class="form-section">
+      <h3>Section 1. General Information</h3>
+      <div class="grid three-columns">
+        <div class="field">
+          <label for="surname">Surname <span class="required-star">*</span></label>
+          <input id="surname" name="surname" type="text" autocomplete="family-name" required />
+        </div>
+        <div class="field">
+          <label for="firstName">First Name <span class="required-star">*</span></label>
+          <input id="firstName" name="firstName" type="text" autocomplete="given-name" required />
+        </div>
+        <div class="field">
+          <label for="otherNames">Other Names</label>
+          <input id="otherNames" name="otherNames" type="text" autocomplete="additional-name" />
+        </div>
+      </div>
+
+      <div class="grid three-columns">
+        <div class="field">
+          <label for="title">Title (Mr, Mrs, Miss, Dr, etc.)</label>
+          <input id="title" name="title" type="text" placeholder="e.g., Dr" />
+        </div>
+        <div class="field">
+          <label for="dateOfBirth">Date of Birth <span class="required-star">*</span></label>
+          <input id="dateOfBirth" name="dateOfBirth" type="date" required />
+        </div>
+        <div class="field">
+          <label for="nationality">Nationality <span class="required-star">*</span></label>
+          <input id="nationality" name="nationality" type="text" autocomplete="country-name" required />
+        </div>
+      </div>
+
+      <div class="grid two-columns">
+        <div class="field">
+          <label for="companyAddress">Company Name &amp; Address</label>
+          <textarea id="companyAddress" name="companyAddress" rows="3"></textarea>
+        </div>
+        <div class="field">
+          <label for="correspondenceAddress">Address for Correspondence <span class="required-star">*</span></label>
+          <textarea id="correspondenceAddress" name="correspondenceAddress" rows="3" required></textarea>
+        </div>
+      </div>
+
+      <div class="grid two-columns">
+        <div class="field">
+          <label for="telephone">Telephone Number(s) <span class="required-star">*</span></label>
+          <input id="telephone" name="telephone" type="tel" required />
+        </div>
+        <div class="field">
+          <label for="email">E‑mail Address <span class="required-star">*</span></label>
+          <input id="email" name="email" type="email" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="jobTitle">Job Title</label>
+        <input id="jobTitle" name="jobTitle" type="text" />
+      </div>
+    </section>
+
+    <!-- ===== SECTION 2 ===== -->
+    <section class="form-section">
+      <h3>Section 2. Academic &amp; Professional Qualifications</h3>
+      <p style="font-size:0.8rem; font-style:italic; font-weight:600; margin-bottom:12px;">
+        In support of your application please submit a copy of your CV, academic and professional certificates.
+        Electronic copies or camera shots are acceptable. <strong>DO NOT ENCLOSE ORIGINAL DOCUMENTS.</strong>
+      </p>
+
+      <div class="qualification-block">
+        <h4 style="font-size:0.85rem; font-weight:700; margin-bottom:4px;">
+          Academic Qualifications
+          <span style="font-weight:400; font-size:0.75rem;">(Start with the highest)</span>
+        </h4>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:45%;">Name of Institute</th>
+                <th style="width:40%;">Certificate / Degree (with discipline)</th>
+                <th style="width:15%;">Year</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="text" name="academicInstitute1" /></td>
+                <td><input type="text" name="academicDegree1" /></td>
+                <td><input type="text" name="academicYear1" /></td>
+              </tr>
+              <tr>
+                <td><input type="text" name="academicInstitute2" /></td>
+                <td><input type="text" name="academicDegree2" /></td>
+                <td><input type="text" name="academicYear2" /></td>
+              </tr>
+              <tr>
+                <td><input type="text" name="academicInstitute3" /></td>
+                <td><input type="text" name="academicDegree3" /></td>
+                <td><input type="text" name="academicYear3" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="qualification-block" style="margin-top:18px;">
+        <h4 style="font-size:0.85rem; font-weight:700; margin-bottom:4px;">
+          Professional Qualifications
+          <span style="font-weight:400; font-size:0.75rem;">(e.g. ACA, ACIB, ACIL, AIIM, AIPM, etc.)</span>
+        </h4>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:45%;">Institute / Examining Body</th>
+                <th style="width:40%;">Qualification obtained</th>
+                <th style="width:15%;">Year</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="text" name="professionalBody1" /></td>
+                <td><input type="text" name="professionalDegree1" /></td>
+                <td><input type="text" name="professionalYear1" /></td>
+              </tr>
+              <tr>
+                <td><input type="text" name="professionalBody2" /></td>
+                <td><input type="text" name="professionalDegree2" /></td>
+                <td><input type="text" name="professionalYear2" /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="grid three-columns" style="margin-top:16px;">
+        <div class="field">
+          <label for="cvFile">Curriculum Vitae (CV)</label>
+          <input id="cvFile" name="cvFile" type="file" accept=".pdf,.doc,.docx" />
+        </div>
+        <div class="field">
+          <label for="certificateFiles">Academic / Professional Certificates</label>
+          <input id="certificateFiles" name="certificateFiles" type="file" multiple />
+        </div>
+        <div class="field">
+          <label for="paymentReceipt2">Payment Receipt</label>
+          <input id="paymentReceipt2" name="paymentReceipt2" type="file" accept="image/*,.pdf" />
+          <small>(If not uploaded above)</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 3 ===== -->
+    <section class="form-section">
+      <h3>Section 3. Employment History</h3>
+      <p style="font-size:0.8rem; font-style:italic; margin-bottom:8px;">
+        List the <strong>TWO</strong> most recent positions, starting with the current one.
+      </p>
+
+      <div class="grid three-columns">
+        <div class="field">
+          <label for="empOrg1">1. Organisation name</label>
+          <input id="empOrg1" name="employmentOrg1" type="text" />
+        </div>
+        <div class="field">
+          <label for="empPos1">Position held</label>
+          <input id="empPos1" name="employmentPos1" type="text" />
+        </div>
+        <div class="field">
+          <label for="empDate1">Date (from‑to)</label>
+          <input id="empDate1" name="employmentDate1" type="text" placeholder="DD/MM/YYYY – DD/MM/YYYY" />
+        </div>
+      </div>
+      <div class="field" style="margin-bottom:14px;">
+        <label for="empResp1">Main responsibilities</label>
+        <input id="empResp1" name="employmentResp1" type="text" />
+      </div>
+
+      <div class="grid three-columns">
+        <div class="field">
+          <label for="empOrg2">2. Organisation name</label>
+          <input id="empOrg2" name="employmentOrg2" type="text" />
+        </div>
+        <div class="field">
+          <label for="empPos2">Position held</label>
+          <input id="empPos2" name="employmentPos2" type="text" />
+        </div>
+        <div class="field">
+          <label for="empDate2">Date (from‑to)</label>
+          <input id="empDate2" name="employmentDate2" type="text" placeholder="DD/MM/YYYY – DD/MM/YYYY" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="empResp2">Main responsibilities</label>
+        <input id="empResp2" name="employmentResp2" type="text" />
+      </div>
+    </section>
+
+    <!-- ===== SECTION 4 ===== -->
+    <section class="form-section">
+      <h3>Section 4. Membership Categories</h3>
+      <p style="font-size:0.85rem; font-weight:600; margin-bottom:8px;">Please select the appropriate category:</p>
+      <div class="radio-group">
+        <div class="field">
+          <input type="radio" id="cat1" name="membershipCategory" value="Nysc-Associate-AIPM" />
+          <label for="cat1">Nysc‑Associate‑AIPM</label>
+        </div>
+        <div class="field">
+          <input type="radio" id="cat2" name="membershipCategory" value="Associate-AIPM" />
+          <label for="cat2">Associate‑AIPM</label>
+        </div>
+        <div class="field">
+          <input type="radio" id="cat3" name="membershipCategory" value="Full Members-FMIPM" />
+          <label for="cat3">Full Members‑FMIPM</label>
+        </div>
+        <div class="field">
+          <input type="radio" id="cat4" name="membershipCategory" value="Senior Members-SMIPM" />
+          <label for="cat4">Senior Members‑SMIPM</label>
+        </div>
+        <div class="field">
+          <input type="radio" id="cat5" name="membershipCategory" value="Fellow-FIPM" />
+          <label for="cat5">Fellow‑FIPM</label>
+        </div>
+        <div class="field">
+          <input type="radio" id="cat6" name="membershipCategory" value="Distinguished Fellow-DFIPM" />
+          <label for="cat6">Distinguished Fellow‑DFIPM</label>
+        </div>
+        <div class="field">
+          <input type="radio" id="cat7" name="membershipCategory" value="Honorary Fellow-HFIPM" />
+          <label for="cat7">Honorary Fellow‑HFIPM</label>
+        </div>
+        <div class="field">
+          <input type="radio" id="cat8" name="membershipCategory" value="Plenipotentiary Fellow-PIPM" />
+          <label for="cat8">Plenipotentiary Fellow‑PIPM</label>
+        </div>
+      </div>
+      <p style="font-size:0.7rem; font-style:italic; margin-top:4px;">
+        * Upgrades in membership are possible with further training and demonstrated readiness.
+      </p>
+    </section>
+
+    <!-- ===== SECTION 5 ===== -->
+    <section class="form-section">
+      <h3>Section 5. Referee</h3>
+      <div class="field" style="margin-bottom:10px;">
+        <label for="refereeName">Name of Referee</label>
+        <input id="refereeName" name="refereeName" type="text" />
+      </div>
+      <div class="field">
+        <label for="refereeAddress">Address (including telephone &amp; e‑mail)</label>
+        <input id="refereeAddress" name="refereeAddress" type="text" />
+      </div>
+    </section>
+
+    <!-- ===== SECTION 6 ===== -->
+    <section class="form-section">
+      <h3>Section 6. Declaration &amp; Certification</h3>
+      <div class="declaration-box">
+        <p>
+          I declare that the information given is correct to the best of my knowledge.
+          I agree to support the mission of the institute, commit to high ethical standards,
+          and be bound by the rules and regulations of the
+          <strong>Institute of Public Peace and Management (IPPM)</strong>.
+        </p>
+      </div>
+      <div class="field">
+        <label for="signature">Applicant's Signature and Date <span class="required-star">*</span></label>
+        <input id="signature" name="signature" type="text"
+               placeholder="Type Full Name to sign electronically (e.g. Emmanuel – DD/MM/YYYY)"
+               required />
+      </div>
+    </section>
+
+    <!-- ===== SECTION 7 ===== -->
+    <section class="form-section official-use">
+      <h3>Section 7. For Official Use Only</h3>
+      <div class="grid two-columns">
+        <div class="field">
+          <label>Date Received (DD/MM/YYYY)</label>
+          <input type="text" name="officialDateReceived" placeholder="DD/MM/YYYY" readonly />
+        </div>
+        <div class="field">
+          <label>Registration Number</label>
+          <input type="text" name="officialRegNo" readonly />
+        </div>
+      </div>
+      <div class="grid two-columns">
+        <div class="field">
+          <label>Payment Receipt No.</label>
+          <input type="text" name="officialReceiptNo" readonly />
+        </div>
+        <div class="field">
+          <label>Name &amp; Signature of Officer</label>
+          <input type="text" name="officialOfficer" readonly />
+        </div>
+      </div>
+      <div class="field">
+        <label>Official Remarks</label>
+        <textarea name="officialRemarks" rows="2" readonly></textarea>
+      </div>
+    </section>
+
+    <!-- ===== FORM ACTIONS ===== -->
+    <div class="form-actions">
+      <button type="button" class="secondary-button" onclick="window.print()">🖨 Print Form</button>
+      <button type="submit" class="primary-button">📤 Submit Application</button>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="form-footer">
+      <p>.....Through Knowledge . Through Partnership . For Humanity!</p>
+      <div class="address">
+        <span>Institute of Public Peace and Management (IPPM)</span>
+        <span>Sheraton Hotel, 30, Mobolaji Bank Anthony Way, Ikeja, Lagos.</span>
+        <span>Tel: 07052526342, 07066678914, 08028198223</span>
+      </div>
+    </footer>
+
+  </form>
+</main>
+
+<!-- ===== JAVASCRIPT – Logo Fallback + Photo Upload/Camera ===== -->
+<script>
+  (function() {
+    'use strict';
+
+    // ---------- Logo Fallback ----------
+    const logoImg = document.getElementById('organisationLogo');
+    const fallback = document.querySelector('.logo-fallback');
+
+    if (logoImg) {
+      logoImg.addEventListener('error', function() {
+        this.style.display = 'none';
+        if (fallback) fallback.style.display = 'flex';
+      });
+    }
+
+    // ---------- Passport Photo – Upload & Camera ----------
+    const photoInput = document.getElementById('passportPhoto');
+    const preview = document.getElementById('photoPreview');
+    const uploadBtn = document.getElementById('uploadPhotoBtn');
+    const cameraBtn = document.getElementById('cameraPhotoBtn');
+    const removeBtn = document.getElementById('removePhotoBtn');
+
+    function updatePreview(file) {
+      if (!file) {
+        // Reset preview
+        preview.innerHTML = `
+          <div class="placeholder">
+            <span>📷</span>
+            <span>Upload or capture</span>
+          </div>
+        `;
+        removeBtn.style.display = 'none';
+        photoInput.value = '';
+        return;
+      }
+
+      // Validate type & size
+      if (!file.type.startsWith('image/')) {
+        alert('Please select a valid image file.');
+        photoInput.value = '';
+        return;
+      }
+      if (file.size > 2 * 1024 * 1024) {
+        alert('Image size must be under 2MB.');
+        photoInput.value = '';
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        preview.innerHTML = `<img src="${e.target.result}" alt="Passport preview" />`;
+        removeBtn.style.display = 'inline-block';
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Upload button – triggers file picker
+    uploadBtn.addEventListener('click', function() {
+      photoInput.removeAttribute('capture');
+      photoInput.click();
+    });
+
+    // Camera button – triggers camera
+    cameraBtn.addEventListener('click', function() {
+      photoInput.setAttribute('capture', 'user'); // 'user' for front, 'environment' for rear
+      photoInput.click();
+    });
+
+    // File selection
+    photoInput.addEventListener('change', function() {
+      if (this.files && this.files[0]) {
+        updatePreview(this.files[0]);
+      } else {
+        updatePreview(null);
+      }
+    });
+
+    // Remove photo
+    removeBtn.addEventListener('click', function() {
+      updatePreview(null);
+    });
+
+    // Also handle if user clears the input manually
+    photoInput.addEventListener('click', function() {
+      // If they click but no file chosen, we keep existing preview
+    });
+
+    // ---------- (Optional) Auto-fill today's date for 'applicationDate' if exists ----------
+    // (We don't have that field in this version, but keep for consistency)
+    const dateField = document.getElementById('applicationDate');
+    if (dateField && !dateField.value) {
+      dateField.valueAsDate = new Date();
+    }
+
+  })();
+</script>
+
+</body>
+</html>
