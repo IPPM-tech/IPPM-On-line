@@ -12,27 +12,20 @@
 
 <main class="page-shell">
 
-  <!--
-    🔑 FormSubmit integration:
-    - action points to FormSubmit endpoint with your email
-    - hidden fields for subject, captcha, template
-    - enctype is multipart/form-data (supports file uploads)
-  -->
+  <!-- FormSubmit integration -->
   <form id="membershipForm" class="application-form"
         action="https://formsubmit.co/emmanuelolaxx@gmail.com"
         method="POST"
         enctype="multipart/form-data"
         novalidate>
 
-    <!-- FormSubmit required hidden fields -->
+    <!-- FormSubmit hidden fields -->
     <input type="hidden" name="_subject" value="New IPPM Membership Application" />
-    <input type="hidden" name="_captcha" value="false" />   <!-- set to true if you want CAPTCHA -->
-    <input type="hidden" name="_template" value="table" />  <!-- neat email table format -->
-
-    <!-- Optional: redirect after success (uncomment if you have a thank-you page) -->
+    <input type="hidden" name="_captcha" value="false" />
+    <input type="hidden" name="_template" value="table" />
     <!-- <input type="hidden" name="_next" value="https://your-site.com/thankyou.html" /> -->
 
-    <!-- ===== HEADER ===== (unchanged) -->
+    <!-- ===== HEADER ===== -->
     <header class="form-header">
       <div class="brand-panel">
         <div class="logo-wrap">
@@ -46,7 +39,7 @@
         </div>
       </div>
 
-      <!-- Passport Photo Panel (unchanged) -->
+      <!-- Passport Photo -->
       <div class="photo-panel">
         <span class="photo-label">📸 Passport Photo</span>
         <div class="photo-preview" id="photoPreview">
@@ -64,20 +57,20 @@
       </div>
     </header>
 
-    <!-- ===== FEE NOTICE ===== (unchanged) -->
+    <!-- ===== FEE NOTICE ===== -->
     <div class="fee-notice">
       <span>💰 Application Fee: <strong>₦10,000</strong></span>
       <span>Pay into: <strong>IPPM GTCO PLC 0210498847</strong></span>
     </div>
 
-    <!-- ===== PAYMENT RECEIPT UPLOAD – HIGHLIGHTED ===== (unchanged) -->
+    <!-- ===== PAYMENT RECEIPT UPLOAD ===== -->
     <div class="receipt-upload-highlight">
       <span class="label-icon">Upload Bank Payment Receipt <span class="required-star">*</span></span>
       <input id="paymentReceipt" name="paymentReceipt" type="file" accept="image/*,.pdf" required />
       <small style="color:#a04040; font-weight:500;">(Attach a clear image or PDF of your payment)</small>
     </div>
 
-    <!-- ===== SECTION 1 ===== (unchanged) -->
+    <!-- ===== SECTION 1 ===== -->
     <section class="form-section">
       <h3>Section 1. General Information</h3>
       <div class="grid three-columns">
@@ -138,7 +131,7 @@
       </div>
     </section>
 
-    <!-- ===== SECTION 2 ===== (unchanged) -->
+    <!-- ===== SECTION 2 ===== -->
     <section class="form-section">
       <h3>Section 2. Academic &amp; Professional Qualifications</h3>
       <p style="font-size:0.8rem; font-style:italic; font-weight:600; margin-bottom:12px;">
@@ -208,9 +201,155 @@
       </div>
     </section>
 
-    <!-- ===== SECTION 3, 4, 5, 6, 7 ===== (unchanged – omitted for brevity, but they remain exactly as before) -->
-    <!-- ⚠️ IMPORTANT: Copy the rest of the sections (3 to 7) from your previous working index.html -->
-    <!-- They are identical – just ensure the <form> tag and hidden fields are updated. -->
+    <!-- ===== SECTION 3 ===== -->
+    <section class="form-section">
+      <h3>Section 3. Employment History</h3>
+      <p style="font-size:0.8rem; font-style:italic; margin-bottom:8px;">
+        List the <strong>TWO</strong> most recent positions, starting with the current one.
+      </p>
+
+      <div class="grid three-columns">
+        <div class="field">
+          <label for="empOrg1">1. Organisation name</label>
+          <input id="empOrg1" name="employmentOrg1" type="text" />
+        </div>
+        <div class="field">
+          <label for="empPos1">Position held</label>
+          <input id="empPos1" name="employmentPos1" type="text" />
+        </div>
+        <div class="field">
+          <label for="empDate1">Date (from‑to)</label>
+          <input id="empDate1" name="employmentDate1" type="text" placeholder="DD/MM/YYYY – DD/MM/YYYY" />
+        </div>
+      </div>
+      <div class="field" style="margin-bottom:14px;">
+        <label for="empResp1">Main responsibilities</label>
+        <input id="empResp1" name="employmentResp1" type="text" />
+      </div>
+
+      <div class="grid three-columns">
+        <div class="field">
+          <label for="empOrg2">2. Organisation name</label>
+          <input id="empOrg2" name="employmentOrg2" type="text" />
+        </div>
+        <div class="field">
+          <label for="empPos2">Position held</label>
+          <input id="empPos2" name="employmentPos2" type="text" />
+        </div>
+        <div class="field">
+          <label for="empDate2">Date (from‑to)</label>
+          <input id="empDate2" name="employmentDate2" type="text" placeholder="DD/MM/YYYY – DD/MM/YYYY" />
+        </div>
+      </div>
+      <div class="field">
+        <label for="empResp2">Main responsibilities</label>
+        <input id="empResp2" name="employmentResp2" type="text" />
+      </div>
+    </section>
+
+    <!-- ===== SECTION 4 ===== -->
+    <section class="form-section">
+      <h3>Section 4. Membership Categories</h3>
+      <p style="font-size:0.85rem; font-weight:600; margin-bottom:8px;">Please select the appropriate category:</p>
+      <div class="radio-group">
+        <div class="field">
+          <input type="radio" id="cat1" name="membershipCategory" value="Nysc-Associate-AIPM" />
+          <label for="cat1">Nysc‑Associate‑AIPM</label>
+        </div>
+        <div class="field">
+          <input type="radio" id="cat2" name="membershipCategory" value="Associate-AIPM" />
+          <label for="cat2">Associate‑AIPM</label>
+        </div>
+        <div class="field">
+          <input type="radio" id="cat3" name="membershipCategory" value="Full Members-FMIPM" />
+          <label for="cat3">Full Members‑FMIPM</label>
+        </div>
+        <div class="field">
+          <input type="radio" id="cat4" name="membershipCategory" value="Senior Members-SMIPM" />
+          <label for="cat4">Senior Members‑SMIPM</label>
+        </div>
+        <div class="field">
+          <input type="radio" id="cat5" name="membershipCategory" value="Fellow-FIPM" />
+          <label for="cat5">Fellow‑FIPM</label>
+        </div>
+        <div class="field">
+          <input type="radio" id="cat6" name="membershipCategory" value="Distinguished Fellow-DFIPM" />
+          <label for="cat6">Distinguished Fellow‑DFIPM</label>
+        </div>
+        <div class="field">
+          <input type="radio" id="cat7" name="membershipCategory" value="Honorary Fellow-HFIPM" />
+          <label for="cat7">Honorary Fellow‑HFIPM</label>
+        </div>
+        <div class="field">
+          <input type="radio" id="cat8" name="membershipCategory" value="Plenipotentiary Fellow-PIPM" />
+          <label for="cat8">Plenipotentiary Fellow‑PIPM</label>
+        </div>
+      </div>
+      <p style="font-size:0.7rem; font-style:italic; margin-top:4px;">
+        * Upgrades in membership are possible with further training and demonstrated readiness.
+      </p>
+    </section>
+
+    <!-- ===== SECTION 5 ===== -->
+    <section class="form-section">
+      <h3>Section 5. Referee</h3>
+      <div class="field" style="margin-bottom:10px;">
+        <label for="refereeName">Name of Referee</label>
+        <input id="refereeName" name="refereeName" type="text" />
+      </div>
+      <div class="field">
+        <label for="refereeAddress">Address (including telephone &amp; e‑mail)</label>
+        <input id="refereeAddress" name="refereeAddress" type="text" />
+      </div>
+    </section>
+
+    <!-- ===== SECTION 6 ===== -->
+    <section class="form-section">
+      <h3>Section 6. Declaration &amp; Certification</h3>
+      <div class="declaration-box">
+        <p>
+          I declare that the information given is correct to the best of my knowledge.
+          I agree to support the mission of the institute, commit to high ethical standards,
+          and be bound by the rules and regulations of the
+          <strong>Institute of Public Peace and Management (IPPM)</strong>.
+        </p>
+      </div>
+      <div class="field">
+        <label for="signature">Applicant's Signature and Date <span class="required-star">*</span></label>
+        <input id="signature" name="signature" type="text"
+               placeholder="Type Full Name to sign electronically (e.g. Emmanuel – DD/MM/YYYY)"
+               required />
+      </div>
+    </section>
+
+    <!-- ===== SECTION 7 ===== -->
+    <section class="form-section official-use">
+      <h3>Section 7. For Official Use Only</h3>
+      <div class="grid two-columns">
+        <div class="field">
+          <label>Date Received (DD/MM/YYYY)</label>
+          <input type="text" name="officialDateReceived" placeholder="DD/MM/YYYY" readonly />
+        </div>
+        <div class="field">
+          <label>Registration Number</label>
+          <input type="text" name="officialRegNo" readonly />
+        </div>
+      </div>
+      <div class="grid two-columns">
+        <div class="field">
+          <label>Payment Receipt No.</label>
+          <input type="text" name="officialReceiptNo" readonly />
+        </div>
+        <div class="field">
+          <label>Name &amp; Signature of Officer</label>
+          <input type="text" name="officialOfficer" readonly />
+        </div>
+      </div>
+      <div class="field">
+        <label>Official Remarks</label>
+        <textarea name="officialRemarks" rows="2" readonly></textarea>
+      </div>
+    </section>
 
     <!-- ===== FORM ACTIONS ===== -->
     <div class="form-actions">
